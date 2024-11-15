@@ -1,0 +1,34 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 14px;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 800px) {
+    main img {
+        width: 500px;
+        /* Устанавливаем ширину изображения в блоке «О нас» */
+    }
+}
+
+@media (max-width: 600px) {
+    main img {
+        width: 100%;
+        /* Устанавливаем ширину изображения в блоке «О нас» */
+    }
+
+    table {
+        font-size: calc(100% - 2px);
+        /* Уменьшение шрифта таблицы на 2 пикселя */
+    }
+}
