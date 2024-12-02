@@ -25,9 +25,9 @@
     </header>
 
     <main>
-        <div class="container">
+        <div class="container" id="food-main">
             <h1>Выберите суп</h1>
-            <section class="food-container">
+            <div class="food-container" >
                 <div class="card">
                     <img src="../imgs/soup1.jpg" alt="Гаспачо">
                     <div>
@@ -55,9 +55,9 @@
                         <button>Добавить</button>
                     </div>
                 </div>
-            </section>
+            </div>
             <h1>Выберите главное блюдо</h1>
-            <section class="food-container">
+            <div class="food-container">
                 <div class="card">
                     <img src="../imgs/bludo1.jpg" alt="Lasagna">
                     <div>
@@ -85,10 +85,10 @@
                         <button>Добавить</button>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <h1>Выберите напиток</h1>
-            <section class="food-container">
+            <div class="food-container">
                 <div class="card">
                     <img src="../imgs/drink1.jpg" alt="Сок">
                     <div>
@@ -116,9 +116,11 @@
                         <button>Добавить</button>
                     </div>
                 </div>
-            </section>
+            </div>
+            </div>
+
             <section>
-                <form id="orderForm">
+                <form id="orderForm" action="https://httpbin.org/post" method="POST">
                     <div class="form-container">
                         <!-- Левая колонка - Заказ -->
                         <div class="form-column">
@@ -218,7 +220,7 @@
                 </form>
             </section>
 
-        </div>
+        
     </main>
 
     <footer>
