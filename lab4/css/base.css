@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    margin-top: 10px;
+    margin-right: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+nav a.highlight {
+    color: orange;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+header {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: black;
+    color: white;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    flex: 1;
+}
+
+.footer-data {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+main,
+header,
+footer {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+@media (max-width: 800px) {
+    nav {
+        display: flex;
+        justify-content: space-between;
+        /* Равное расстояние между элементами без отступов по краям */
+    }
+}
+
+@media (max-width: 600px) {
+
+    h1,
+    section h2 {
+        text-align: center;
+        /* Выравнивание текста по центру */
+    }
+
+    nav {
+        flex-direction: column;
+        /* Вертикальное направление элементов в контейнере */
+        align-items: center;
+        /* Выравнивание флекс-элементов по центру поперечной оси */
+    }
+
+    nav a {
+        font-size: calc(100% + 4px);
+        /* Увеличение шрифта ссылок на 4 пикселя */
+    }
+
+}
+
+@media (max-width: 400px) {
+    table {
+        font-size: calc(100% - 4px);
+        /* Уменьшение шрифта таблицы еще на 2 пикселя, в сумме на 4 пикселя */
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    main,
+    header,
+    footer {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
