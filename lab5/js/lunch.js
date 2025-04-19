@@ -393,8 +393,62 @@ function createMenu() {
     });
 }
 
-// Остальные функции (toggleFilter, resetFilters, applyFilters, 
-// addItemToOrder, removeItem, updateSelectedItemsDisplay) остаются без изменений
+// Функция для отправки формы
+async function submitOrderForm(event) {
+    event.preventDefault();
+    
+    // Собираем данные формы
+    const formData = new FormData(document.getElementById('orderForm'));
+    const formValues = Object.fromEntries(formData.entries());
+    
+    // Добавляем информацию о заказе
+    const orderData = {
+        formData: formValues,
+        order: {
+            items: Object.fromEntries(
+                Object.entries(AppState.selectedItems)
+                    .filter(([_, item]) => item !== null)
+            ),
+            total: calculateTotal()
+        },
+        timestamp: new Date().toISOString()
+    };
+    
+    try {
+        // Используем правильный URL для тестирования POST-запросов
+        const response = await fetch('https://httpbin.org/post', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        console.log('Ответ сервера:', result);
+        
+        const newWindow = window.open('', '_blank');
+        newWindow.document.write(`
+            <h1>Ответ сервера</h1>
+            <pre>${JSON.stringify(result, null, 2)}</pre>
+            <p>Вы можете также посмотреть результат на <a href="https://httpbin.org/post" target="_blank">httpbin.org</a></p>
+        `);
+        
+    } catch (error) {
+        console.error('Ошибка при отправке заказа:', error);
+        alert(`Произошла ошибка: ${error.message}`);
+    }
+}
+function calculateTotal() {
+    return Object.values(AppState.selectedItems)
+        .filter(item => item !== null)
+        .reduce((total, item) => total + item.price, 0);
+}
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
@@ -407,4 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.value === 'scheduled' ? 'block' : 'none';
         });
     });
+    
+    // Добавляем обработчик отправки формы
+    document.getElementById('orderForm').addEventListener('submit', submitOrderForm);
 });
