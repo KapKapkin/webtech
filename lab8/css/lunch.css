@@ -92,6 +92,12 @@ button {
     flex-direction: column;
 }
 
+.form-row {
+  padding: 20px;
+  justify-content: space-between;
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 800px) {
     .form-container {
         display: grid;
