@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/lunch.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Food Construct</h1>
+        <nav>
+            <a href="about.html">О нас</a>
+            <a href="#lunch" class="highlight">Собрать ланч</a>
+            <a href="checkout.html">Оформить заказ</a>
+            <a href="#contacts">Контакты</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="lunch-combos"></section>
+
+            <section class="menu">
+                
+            </section>
+            <section>
+                <form id="orderForm" method="post" action="https://httpbin.org/post">
+                    <input type="hidden" name="soup" id="hiddenSoup">
+                    <input type="hidden" name="appetizer" id="hiddenAppetizer">
+                    <input type="hidden" name="main_dish" id="hiddenMainDish">
+                    <input type="hidden" name="dessert" id="hiddenDessert">
+                    <input type="hidden" name="drink" id="hiddenDrink">
+                    <div class="form-container">
+                        <!-- Левая колонка - Заказ -->
+                        <div class="form-column">
+                            <h2 class="column-title">Ваш заказ</h2>
+                            
+                            <div id="selectedItems">
+                                <p>Выберите блюда из меню выше</p>
+                            </div>
+                            
+                            <div class="total-price">
+                                <strong>Итого: </strong><span id="totalAmount">0₽</span>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="comments">Комментарии к заказу:</label>
+                                <textarea id="comments" name="comments" rows="3"></textarea>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>Параметры доставки:</label>
+                                <div class="radio-group">
+                                    <label>
+                                        <input type="radio" name="delivery" value="asap" checked>
+                                        Как можно скорее</label>
+                                    <label>
+                                        <input type="radio" name="delivery" value="scheduled">
+                                        К указанному времени
+                                    </label>
+                                </div>
+                            </div>
+            
+                            <div class="form-group" id="timeSelect" style="display: none;">
+                                <label for="deliveryTime">Время доставки:</label>
+                                <input type="time" id="deliveryTime" name="deliveryTime" min="07:00" max="23:00">
+                            </div>
+                        </div>
+            
+                        
+                        <div class="form-column">
+                            <h2 class="column-title">Ваши данные</h2>
+            
+                            <div class="form-group">
+                                <label for="name">Имя:</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="phone">Номер телефона:</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label for="address">Адрес доставки:</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+            
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" name="notifications">
+                                    Получать информацию о скидках и акциях
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <section class="checkout-panel">
+                        <div class="checkout-summary">
+                            <p>Сумма заказа: <span id="currentTotal">0₽</span></p>
+                            <a href="checkout.html" id="checkoutLink" class="checkout-button">Перейти к оформлению</a>
+                        </div>
+                    </section>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <section id="contacts">
+            <div class="footer-data">
+                <h2>Контакты</h2>
+                <p><a href="mailto:info@example.com">info@example.com</a></p>
+                <p><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+            </div>
+        </section>
+
+
+    </footer>
+    <script src="../js/lunch.js"></script>
+</body>
