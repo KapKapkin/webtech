@@ -163,7 +163,6 @@ async function submitOrder() {
         phone: formData.get('phone'),
         delivery_address: formData.get('address'),
         delivery_type: formData.get('delivery'),
-        
         comment: formData.get('comment'),
         soup_id: order.soup || null,
         main_course_id: order["main-course"] || null,
@@ -179,11 +178,12 @@ async function submitOrder() {
     try {
         console.log(orderData);
         const response = await fetch(`${API_URL}/orders?api_key=${API_KEY}`, {
-            method: 'POST',
+            method: 'post',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
-            body: orderData
+            body: JSON.stringify(orderData)
         });
 
         if (!response.ok) {
